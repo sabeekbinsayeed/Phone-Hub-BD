@@ -21,7 +21,7 @@ const loadData = () => {
         // fetch(url).then(res => res.json()).then(data => displayData(data.meals))
         fetch(url)
             .then(res => res.json())
-            .then(data => displayData(data.data))
+            .then(data => displayData(data.data.slice(20)))
 
     }
 
@@ -30,6 +30,7 @@ const loadData = () => {
 const displayData = datas => {
     console.log(datas)
     const mobiles = document.getElementById('mobile-container')
+    mobiles.textContent = ''
 
     for (const data of datas) {
 
@@ -75,13 +76,27 @@ const displaySingleData = data => {
     div.classList.add('card')
     div.innerHTML = `
   
-    <img src="${data.image}" class="card-img-top" alt="...">
+    <img src="${data.image}" class="w-50 card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">${data.name}</h5>
+            <h5 class="card-title">Main features</h5>
             <p class="card-text">
         storage:   ${data.mainFeatures.storage}
+        
        
             </p>
+            <p class="card-text">
+            storage:   ${data.mainFeatures.chipSet}
+            
+           
+                </p>
+               
+            <p class="card-text">
+           
+            Relased data: ${data?.releaseDate !== '' ? data.releaseDate : 'No Release Date Found'}
+            
+           
+                </p>
 
             <p class="card-text">
             display size:   ${data.mainFeatures.displaySize}
