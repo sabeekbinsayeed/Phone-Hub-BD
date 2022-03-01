@@ -1,5 +1,4 @@
-console.log('kaj hosce')
-// document.getElementById('input-error').style.display = 'none';
+// console.log('kaj hosce')
 let name = ''
 const loadData = () => {
     name = document.getElementById('input-text').value
@@ -12,9 +11,6 @@ const loadData = () => {
 
     else {
         document.getElementById('input-error').style.display = 'none';
-        // #error message bondho koro 
-        // #input field faka koro
-        //document.getElementById('head1').style.display = 'none';
         document.getElementById('input-text').value = ''
         const url = `https://openapi.programming-hero.com/api/phones?search=${name}`
         console.log(url)
@@ -36,10 +32,7 @@ const loadData = () => {
 }
 
 const displayData = datas => {
-    // console.log(datas.length)
 
-
-    // console.log(datas)
     const mobiles = document.getElementById('mobile-container')
     mobiles.textContent = ''
 
@@ -81,9 +74,8 @@ const loadSingleData = (id) => {
 }
 
 const displaySingleData = data => {
-    console.log(data)
-    console.log(data.others)
-    // console.log(data.others.GPS)
+    // console.log(data)
+    // console.log(data.others)
     const singleMeal = document.getElementById('single-meal');
     singleMeal.textContent = ''
     const div = document.createElement('div')
@@ -162,18 +154,7 @@ const displaySingleData = data => {
     <div id='sensor'></div>
         </div >
     `
-    // const sensorContainer = document.getElementById('sensor1')
 
-    // mysensor = data.mainFeatures.sensors
-    // console.log(mysensor)
-    // for (const sen of mysensor) {
-    //     const p = document.createElement('p')
-
-    //     p.innerText = `${ sen } `;
-    //     sensorContainer.appendChild(p)
-    // }
-
-    // singleMeal.appendChild(div)
     singleMeal.appendChild(div)
 
 
@@ -183,13 +164,10 @@ const displaySingleData = data => {
 const loadS = () => { console.log('hello') }
 const allShow = () => {
     document.getElementById('input-error').style.display = 'none';
-    // #error message bondho koro 
-    // #input field faka koro
-    //document.getElementById('head1').style.display = 'none';
     document.getElementById('input-text').value = ''
     const url = `https://openapi.programming-hero.com/api/phones?search=${name}`
     console.log(url)
-    // fetch(url).then(res => res.json()).then(data => displayData(data.meals))
+
     fetch(url)
         .then(res => res.json())
         .then(data => displayData(data.data))
