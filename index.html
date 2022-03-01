@@ -11,7 +11,7 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- css -->
     <link rel="stylesheet" href="phone.css">
-
+    <!-- basic css style -->
     <style>
         #input-error {
             display: none;
@@ -25,21 +25,26 @@
 </head>
 
 <body>
+
     <h1 class='text-center'>Phone Hub BD</h1>
+
+    <!-- taking input and button-->
     <div class="input-group mb-3 ">
         <input id='input-text' type="text" class="form-control" placeholder="Mobile" aria-label="Recipient's username"
             aria-describedby="button-addon2">
         <button onClick='loadData()' class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
     </div>
-
+    <!-- input error -->
     <div>
         <h1 id='input-error' class="text-danger">Improper input</h1>
     </div>
 
-    <div id='single-meal' class="w-50 mx-auto">
+
+    <!-- single product container -->
+    <div id='single-meal' class="w-50 mx-auto p-3">
 
     </div>
-
+    <!-- main product container -->
     <div id='mobile-container' class="row g-3">
 
 
@@ -53,8 +58,9 @@
 
 
     </div>
+    <!-- all products show button -->
     <div>
-        <button id='buttonShow' onClick='allShow()' id="button-hide">show all</button>
+        <button id='buttonShow' onClick='allShow()' class="m-3 p-3">show all</button>
     </div>
 
 
