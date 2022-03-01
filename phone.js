@@ -1,4 +1,6 @@
 // console.log('kaj hosce')
+
+// all phone data load
 let name = ''
 const loadData = () => {
     name = document.getElementById('input-text').value
@@ -31,6 +33,7 @@ const loadData = () => {
 
 }
 
+// phone data display
 const displayData = datas => {
 
     const mobiles = document.getElementById('mobile-container')
@@ -61,6 +64,7 @@ const displayData = datas => {
 
 }
 
+// single phone data load
 const loadSingleData = (id) => {
     const url = `https://openapi.programming-hero.com/api/phone/${id}`
     fetch(url)
@@ -72,6 +76,8 @@ const loadSingleData = (id) => {
     // console.log(url)
 
 }
+
+// single phone data show
 
 const displaySingleData = data => {
     // console.log(data)
