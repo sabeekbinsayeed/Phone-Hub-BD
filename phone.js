@@ -1,8 +1,8 @@
 console.log('kaj hosce')
 // document.getElementById('input-error').style.display = 'none';
-
+let name = ''
 const loadData = () => {
-    const name = document.getElementById('input-text').value
+    name = document.getElementById('input-text').value
 
     if (name == '') {
         console.log('not found')
@@ -21,14 +21,25 @@ const loadData = () => {
         // fetch(url).then(res => res.json()).then(data => displayData(data.meals))
         fetch(url)
             .then(res => res.json())
-            .then(data => displayData(data.data.slice(20)))
+            .then(data => {
+                displayData(data.data.slice(0, 20))
+                console.log(data)
+
+
+                if (data.data.length >= 20) {
+                    document.getElementById('buttonShow').style.display = 'block';
+                }
+            })
 
     }
 
 }
 
 const displayData = datas => {
-    console.log(datas)
+    // console.log(datas.length)
+
+
+    // console.log(datas)
     const mobiles = document.getElementById('mobile-container')
     mobiles.textContent = ''
 
@@ -71,9 +82,13 @@ const loadSingleData = (id) => {
 
 const displaySingleData = data => {
     console.log(data)
+    console.log(data.others)
+    // console.log(data.others.GPS)
     const singleMeal = document.getElementById('single-meal');
+    singleMeal.textContent = ''
     const div = document.createElement('div')
     div.classList.add('card')
+
     div.innerHTML = `
   
     <img src="${data.image}" class="w-50 card-img-top" alt="...">
@@ -86,10 +101,19 @@ const displaySingleData = data => {
        
             </p>
             <p class="card-text">
-            storage:   ${data.mainFeatures.chipSet}
+            chip set:   ${data.mainFeatures.chipSet}
             
            
                 </p>
+
+                <p class="card-text">
+                memory:  
+                 ${data.mainFeatures.memory
+
+        }
+                
+               
+                    </p>
                
             <p class="card-text">
            
@@ -105,9 +129,70 @@ const displaySingleData = data => {
          
             
             
-            </p>
-        </div>
-   `
+       
+
+            <h5  class="card-title">Sensor</h5>
+            <p>
+            ${data.mainFeatures.sensors
+        // for (const d of data.mainFeatures.sensors){
+        // }
+        }      
+        loadS()     
+            </p >
+           
+           
+          
+
+            <p class="card-text">
+            Others : ${data.others ? ` 
+            <p>GPS : ${data.others.GPS}</p>
+            <p>WLAN : ${data.others.WLAN}</p>
+            <p>Bluetooth : ${data.others.Bluetooth}</p>
+            
+            
+            ` : 'no data other found'
+        }
+            </p >
+
+
+
+
+
+
+    <div id='sensor'></div>
+        </div >
+    `
+    // const sensorContainer = document.getElementById('sensor1')
+
+    // mysensor = data.mainFeatures.sensors
+    // console.log(mysensor)
+    // for (const sen of mysensor) {
+    //     const p = document.createElement('p')
+
+    //     p.innerText = `${ sen } `;
+    //     sensorContainer.appendChild(p)
+    // }
+
+    // singleMeal.appendChild(div)
     singleMeal.appendChild(div)
 
+
+}
+
+
+const loadS = () => { console.log('hello') }
+const allShow = () => {
+    document.getElementById('input-error').style.display = 'none';
+    // #error message bondho koro 
+    // #input field faka koro
+    //document.getElementById('head1').style.display = 'none';
+    document.getElementById('input-text').value = ''
+    const url = `https://openapi.programming-hero.com/api/phones?search=${name}`
+    console.log(url)
+    // fetch(url).then(res => res.json()).then(data => displayData(data.meals))
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayData(data.data))
+
+    document.getElementById('buttonShow').style.display = 'none';
 }
